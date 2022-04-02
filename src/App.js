@@ -18,7 +18,7 @@ function App() {
      console.log("current page", currentPage);
   }
   // Page i mapleyip her birine changePage fonksiyonu verebilir miyim?
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(5);
   const [savedPages, setSavedPages] = useState([]);
   const [currentPage, setCurrentPage] = useState([]);
   useEffect(()=>{
