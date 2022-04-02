@@ -1,0 +1,250 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.w-text {
+  color: #ffffff;
+}
+
+body {
+  background-color: #222222;
+}
+
+.main-image {
+  height: 78vh;
+  width: 100%;
+}
+
+.blur {
+  box-shadow: 0px 0px 20px 20px rgba(255, 255, 255, 1);
+  text-shadow: 0px 0px 10px rgba(51, 51, 51, 0.9);
+  transform: scale(0.9);
+  opacity: 0.6;
+}
+
+.marvel-logo {
+  max-width: 600px;
+  height: 290px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: 55%;
+  filter: drop-shadow(0px 4px 4px rgba(255, 255, 255, 0.25));
+}
+
+.cards-container {
+  margin: 0 auto;
+  margin-top: 305px;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 105px;
+  position: relative;
+  justify-content: space-between;
+}
+
+.card-container {
+  position: relative;
+  width: 252px;
+  height: 369px;
+  border: 1px solid #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.card-container:hover{
+  cursor: pointer;
+}
+.card-image {
+  width: 216px;
+  height: 324px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  bottom: 20%;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.card-horizontal-rule {
+  position: absolute;
+  width: 216px;
+  height: 1px;
+  background: #ffffff;
+  top: -40px;
+}
+
+.card-text {
+  font-size: 18px;
+  font-family: "Roboto", sans-serif !important;
+  line-height: 21px;
+  margin-bottom: 1.5rem;
+}
+
+.nav-wrapper {
+  display: flex;
+  justify-content: end;
+
+  position: absolute;
+  left: 50.5%;
+}
+
+.navigation-container {
+  width: 648px;
+  height: 72px;
+  display: flex;
+  gap: 18px;
+  margin-top: 110px;
+  margin-bottom: 234px;
+}
+
+.arrow {
+  width: 32.4px;
+  height: 32.4px;
+  margin-top: 20px;
+}
+
+.number {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  letter-spacing: 0.15px;
+  color: #7e7e7e;
+  position: relative;
+  padding: 1rem 1rem;
+}
+
+.active-number {
+  background: #7e7e7e;
+  border-radius: 10px;
+  color: #000000;
+}
+.my-2{
+  margin: 1rem 0;
+}
+
+/* Bonus: Overlay added */
+.modal-close-btn {
+  font-size: 30px;
+  color: rgb(206, 0, 0);
+  margin-top: 3.5rem;
+  margin-right: 4.5rem;
+  position: absolute;
+  right: 0;
+}
+.modal-close-btn:hover {
+  cursor: pointer;
+  color: rgb(165, 79, 79)
+}
+
+#modal {
+  background-color: #222222;
+  border: 1px solid red;
+  border-radius: 10px;
+  width: 101%;
+  height: 550px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  display: none;
+  bottom: 200;
+  box-shadow: 0px 9px 46px 8px rgba(0, 0, 0, 0.12),
+    0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 11px 15px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+
+}
+
+.show {
+  opacity: 1;
+  display: block !important;
+
+}
+
+
+
+.modal-content {
+  margin-top: 4rem;
+  margin-left: 2rem;
+  display: flex;
+  color: #fff;
+  font-size: 25px;
+  font-family: 'Roboto';
+}
+
+.modal-image {
+  width: 500px;
+}
+
+.modal-text {
+  align-self: center;
+}
+
+.modal-text ul{
+  list-style: none;
+  padding: 0 3.5rem;
+}
+
+/* Flex classes */
+
+.d-flex{
+  display: flex;
+}
+
+.col-4{
+  width: 33% !important;
+}
