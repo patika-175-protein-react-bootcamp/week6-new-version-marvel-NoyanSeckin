@@ -14,9 +14,6 @@ export default function Cards(props)  {
 
   // }
   const imageIsValid = (str) => {
-    // let str = "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available";
-    let readyStr = str.slice(-19);
-    console.log(readyStr);
     if(str.slice(-19) !== 'image_not_available'){
       return true
     } else return false;
@@ -24,7 +21,6 @@ export default function Cards(props)  {
   return (
     <div className={"cards-container"}>
       {props.currentPage.map(character => {
-          // console.log(character.thumbnail.path );
           if(imageIsValid(character.thumbnail.path)){
             return(
               <div 

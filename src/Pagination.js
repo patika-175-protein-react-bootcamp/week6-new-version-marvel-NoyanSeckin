@@ -64,7 +64,7 @@ export default function Pagination({page, setPage}) {
        </div>
       )
     }
-    if(page >= 199){
+    if(page >= 198){
       return(
         <div className={"navigation-container"}>
           <img className='arrow' src={require('./images/arrow-left.png')} alt="arrow-left" onClick={()=> changePage("backward")}/>
