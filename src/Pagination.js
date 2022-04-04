@@ -3,8 +3,9 @@ import React from 'react'
 
 export default function Pagination({page, setPage, loadPage}) {
   const changePage = (action) => {
+    loadPage();
     if(typeof action === 'number'){
-      console.log("action iz num");
+      setPage(action);
     }
     else if(typeof action === 'string'){
       action === "backward" && setPage(page - 1);  
@@ -14,27 +15,27 @@ export default function Pagination({page, setPage, loadPage}) {
   const generateNumTags = (arr, minRange, maxRange) => {
     const nums = arr.filter(page => page > minRange && page < maxRange );
     const numTags = nums.map(num => {
-      return <p onClick={() => setPage(num)} className={`number ${page === num && "active-number"}`}>{num}</p>
+      return <p onClick={() => changePage(num)} className={`number ${page === num && "active-number"}`}>{num}</p>
     });
     return numTags;
   }
   const leftArrow = () =>{
-    return <img className='arrow' src={require('./images/arrow-left.png')} alt="arrow-left" onClick={()=> {changePage("backward"); loadPage();}}/>;
+    return <img className='arrow' src={require('./images/arrow-left.png')} alt="arrow-left" onClick={()=> {changePage("backward");}}/>;
   }
   const rightArrow = () => {
-    return <img className='arrow' src={require('./images/arrow-right.png')} alt="arrow-right" onClick={()=> {changePage("forward"); loadPage();}}/>;
+    return <img className='arrow' src={require('./images/arrow-right.png')} alt="arrow-right" onClick={()=> {changePage("forward");}}/>;
   }
   const threeDots = () =>{
     return <p className={`number`}>...</p>;
    }
   const page1 = () => {
-    return <p onClick={() => setPage(1)} className={`number ${page === 1 && "active-number"}`}>1</p>;
+    return <p onClick={() => changePage(1)} className={`number ${page === 1 && "active-number"}`}>1</p>;
   }
   const page200 = () => {
-    return <p onClick={() => setPage(200)} className={`number`}>200</p>
+    return <p onClick={() => changePage(200)} className={`number`}>200</p>
   }
   const dynamicPage = (page, value) => {
-   return <p onClick={() => setPage(page + value)}  className='number'>{page + value}</p>
+   return <p onClick={() => changePage(page + value)}  className='number'>{page + value}</p>
   }
   const renderPaginator = () => {
     let pages = [];

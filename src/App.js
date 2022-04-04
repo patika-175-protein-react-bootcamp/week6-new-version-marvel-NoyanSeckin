@@ -24,21 +24,25 @@ function App() {
     const savedPages = JSON.parse(sessionStorage.getItem("saved-pages"));
     if(savedPages === null){
       sessionStorage.setItem("saved-pages", JSON.stringify([{page, characters}]));
-    } else if(savedPages !== null){
+    }else if(savedPages !== null){
       sessionStorage.setItem("saved-pages", JSON.stringify([...savedPages, {page, characters}]));
     }
     
   }
   const loadPage = async()=> {
     const savedPages = JSON.parse(sessionStorage.getItem("saved-pages"));
+    const activePage = savedPages?.filter(value => value.page === page);
+   
     if(savedPages === null){
       getMarvelApi();
-    } else if(savedPages.filter(value => value.page !== page) === undefined){
-      console.log('every calisti');
+    } else if(activePage?.length <= 0){
+      console.log('Get marvel data');
       getMarvelApi();
-    }else if(savedPages.filter(value => value.page === page)){
-      setCurrentPage(savedPages.filter(savedPage => savedPage.page === page));
-      console.log("every tersi calisti");
+    }else if(activePage?.length > 0){
+      console.log("get local data");
+      const currentPage = savedPages.filter(savedPage => savedPage.page === page);
+      console.log(currentPage);
+      // setCurrentPage(() => savedPages.filter(savedPage => savedPage.page === page));
     }
     // console.log("saved pages", savedPages);
     // console.log("Page state: ",page)
