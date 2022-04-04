@@ -18,9 +18,10 @@ export default function Cards(props)  {
       return true
     } else return false;
   }
+  console.log(props.currentPage)
   return (
     <div className={"cards-container"}>
-      {props.currentPage.map(character => {
+      {props.currentPage.characters?.map(character => {
           if(imageIsValid(character.thumbnail.path)){
             return(
               <div 

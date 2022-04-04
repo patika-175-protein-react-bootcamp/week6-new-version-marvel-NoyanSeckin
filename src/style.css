@@ -150,6 +150,10 @@ body {
   width: 32.4px;
   height: 32.4px;
   margin-top: 20px;
+  user-select: none;
+}
+.arrow:hover{
+  cursor: pointer;
 }
 
 .number {
@@ -165,6 +169,10 @@ body {
   color: #7e7e7e;
   position: relative;
   padding: 1rem 1rem;
+}
+
+.number:hover{
+  cursor: pointer;
 }
 
 .active-number {

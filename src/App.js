@@ -11,41 +11,48 @@ function App() {
 
   // Page i mapleyip her birine changePage fonksiyonu verebilir miyim?
   const [page, setPage] = useState(1);
-  const [savedPages, setSavedPages] = useState([]);
+  // const [savedPages, setSavedPages] = useState([{number: -1, characters: []}]);
   const [currentPage, setCurrentPage] = useState([]);
-  const changePage = () => {
-    savedPages.forEach(savedPage => {
-      // if()
-    })
+  
+
+  const getMarvelApi = async() =>{
+    const response = await axios(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=986efdb7820b2ac70e3a61e19ed53fba&hash=${hash}`);
+    const characters = response.data.data.results;
+    
+    setCurrentPage({page, characters});
+    
+    const savedPages = JSON.parse(sessionStorage.getItem("saved-pages"));
+    if(savedPages === null){
+      sessionStorage.setItem("saved-pages", JSON.stringify([{page, characters}]));
+    } else if(savedPages !== null){
+      sessionStorage.setItem("saved-pages", JSON.stringify([...savedPages, {page, characters}]));
+    }
+    
+  }
+  const loadPage = async()=> {
+    const savedPages = JSON.parse(sessionStorage.getItem("saved-pages"));
+    if(savedPages === null){
+      getMarvelApi();
+    } else if(savedPages.filter(value => value.page !== page) === undefined){
+      console.log('every calisti');
+      getMarvelApi();
+    }else if(savedPages.filter(value => value.page === page)){
+      setCurrentPage(savedPages.filter(savedPage => savedPage.page === page));
+      console.log("every tersi calisti");
+    }
+    // console.log("saved pages", savedPages);
+    // console.log("Page state: ",page)
+    // console.log("current page", currentPage )
+    
   }
   useEffect(()=>{
-    // TODO: Check if page was loaded if not call getMarvelData
-      // console.log(savedPages);
-      let savedPage = savedPages.filter(savedPage =>(savedPage.number === page));
-      if(Object.keys(savedPage) > 0 ){
-        console.log("savedpageeeeeeeeee", savedPage);
-        setCurrentPage(savedPage);
-      }else
-      {const getMarvelData = async()=>{
-          const response = await axios(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=986efdb7820b2ac70e3a61e19ed53fba&hash=${hash}`)
-          const characters = response.data.data.results;
-          const number = page;
-          if(savedPages.every(value => value.number !== page)){
-           console.log("every section");
-           setSavedPages(savedPages => [...savedPages, {number, characters}])
-          }
-          setCurrentPage(characters);
-      }
-      getMarvelData();
-    }
-    } 
-  ,[page])
-
+    loadPage();
+  }, [])
   return (
     <div className="App">
       <Header></Header>
       <Cards currentPage={currentPage}></Cards>
-      <Pagination page={page} setPage={setPage}></Pagination>
+      <Pagination loadPage={loadPage} page={page} setPage={setPage}></Pagination>
     </div>
   );
 }

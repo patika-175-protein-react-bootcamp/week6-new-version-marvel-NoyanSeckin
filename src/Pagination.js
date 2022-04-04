@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import React from 'react'
 
-export default function Pagination({page, setPage}) {
+export default function Pagination({page, setPage, loadPage}) {
   const changePage = (action) => {
     if(typeof action === 'number'){
       console.log("action iz num");
@@ -11,10 +11,30 @@ export default function Pagination({page, setPage}) {
       action === "forward" && setPage(page + 1) ;
     }
   }
-  const checkActiveClass = (num, arr) => {
-    // arr.forEach(number => {
-    //   if(num)
-    // })
+  const generateNumTags = (arr, minRange, maxRange) => {
+    const nums = arr.filter(page => page > minRange && page < maxRange );
+    const numTags = nums.map(num => {
+      return <p onClick={() => setPage(num)} className={`number ${page === num && "active-number"}`}>{num}</p>
+    });
+    return numTags;
+  }
+  const leftArrow = () =>{
+    return <img className='arrow' src={require('./images/arrow-left.png')} alt="arrow-left" onClick={()=> {changePage("backward"); loadPage();}}/>;
+  }
+  const rightArrow = () => {
+    return <img className='arrow' src={require('./images/arrow-right.png')} alt="arrow-right" onClick={()=> {changePage("forward"); loadPage();}}/>;
+  }
+  const threeDots = () =>{
+    return <p className={`number`}>...</p>;
+   }
+  const page1 = () => {
+    return <p onClick={() => setPage(1)} className={`number ${page === 1 && "active-number"}`}>1</p>;
+  }
+  const page200 = () => {
+    return <p onClick={() => setPage(200)} className={`number`}>200</p>
+  }
+  const dynamicPage = (page, value) => {
+   return <p onClick={() => setPage(page + value)}  className='number'>{page + value}</p>
   }
   const renderPaginator = () => {
     let pages = [];
@@ -24,55 +44,46 @@ export default function Pagination({page, setPage}) {
     if(page < 5){
       return(
         <div className={"navigation-container"}>
-          <p onClick={() => setPage(1)} className={`number ${page === pages.at(1) && "active-number"}`}>{pages.at(1)}</p>
-          <p onClick={() => setPage(2)} className={`number ${page === pages.at(2) && "active-number"}`}>2</p>
-          <p onClick={() => setPage(3)} className={`number ${page === pages.at(3) && "active-number"}`}>3</p>
-          <p onClick={() => setPage(4)} className={`number ${page === pages.at(4) && "active-number"}`}>4</p>
-          <p className={`number`}>...</p>
-          <p onClick={() => setPage(200)} className={`number`}>{pages.at(-1)}</p>
-          <img className='arrow' src={require('./images/arrow-right.png')} alt="arrow-left" onClick={()=> changePage("forward")}/>
+          {generateNumTags(pages, 0, 5)}
+          {threeDots()}
+          {page200()}
+          {rightArrow()}
        </div>
       )
     }
-    
-    if(page >= 5 && page < 197){
-      return(
+    if(page > 4 && page < 196){
+       return(
        <div className={"navigation-container"}>
-          <img className='arrow' src={require('./images/arrow-left.png')} alt="arrow-left" onClick={()=> changePage("backward")}/>
-          <p onClick={() => setPage(1)}  className='number'>{pages.at(1)}</p>
-          <p className='number'>...</p>
-          <p onClick={() => setPage(page - 1)}  className='number'>{page-1}</p>
+          {leftArrow()}
+          {page1()}
+          {threeDots()}
+          {dynamicPage(page, -1)}
           <p className='number active-number'>{page}</p>
-          <p onClick={() => setPage(page + 1)}  className='number'>{page + 1}</p>
-          <p className='number'>...</p>
-          <p onClick={() => setPage(200)}  className='number'>{pages.at(-1)}</p>
-          <img className='arrow' src={require('./images/arrow-right.png')} alt="arrow-left" onClick={()=> changePage("forward")}/>
+          {dynamicPage(page, 1)}
+          {threeDots()}
+          {page200()}
+          {rightArrow()}
        </div>
       )
     }
-    if(page <= 197 && page < 199){
+    if(page > 195 && page < 200){
       return(
         <div className={"navigation-container"}>
-          <img className='arrow' src={require('./images/arrow-left.png')} alt="arrow-left" onClick={()=> changePage("backward")}/>
-          <p onClick={() => setPage(1)} className={`number ${page === pages.at(1) && "active-number"}`}>1</p>
-          <p className={`number`}>...</p>
-          <p onClick={() => setPage(196)} className={`number ${page === pages.at(196) && "active-number"}`}>196</p>
-          <p onClick={() => setPage(197)} className={`number ${page === pages.at(197) && "active-number"}`}>197</p>
-          <p onClick={() => setPage(198)} className={`number ${page === pages.at(198) && "active-number"}`}>198</p>
-          <p onClick={() => setPage(199)} className={`number ${page === pages.at(199) && "active-number"}`}>199</p>
-          <p onClick={() => setPage(200)} className={`number ${page === pages.at(200) && "active-number"}`}>200</p>
-       </div>
+          {leftArrow()}
+          {page1()}
+          {threeDots()}
+          {generateNumTags(pages, 195, 200)}
+          {page200()}
+        </div>
       )
     }
-    if(page >= 198){
+    if(page > 197){
       return(
         <div className={"navigation-container"}>
-          <img className='arrow' src={require('./images/arrow-left.png')} alt="arrow-left" onClick={()=> changePage("backward")}/>
-          <p onClick={() => setPage(1)} className={`number ${page === pages.at(1) && "active-number"}`}>1</p>
-          <p className={`number`}>...</p>
-          <p onClick={() => setPage(198)} className={`number ${page === pages.at(198) && "active-number"}`}>198</p>
-          <p onClick={() => setPage(199)} className={`number ${page === pages.at(199) && "active-number"}`}>199</p>
-          <p onClick={() => setPage(200)} className={`number ${page === pages.at(200) && "active-number"}`}>200</p>
+          {leftArrow()}
+          {page1()}
+          {threeDots()}
+          {generateNumTags(pages, 197, 201)}
        </div>
       )
     }
