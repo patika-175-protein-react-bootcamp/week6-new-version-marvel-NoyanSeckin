@@ -12,7 +12,7 @@ export default function Pagination({page, setPage, loadPage}) {
       action === "forward" && setPage(page + 1) ;
     }
   }
-  const generateNumTags = (arr, minRange, maxRange) => {
+  const generatePageNums = (arr, minRange, maxRange) => {
     const nums = arr.filter(page => page > minRange && page < maxRange );
     const numTags = nums.map(num => {
       return <p onClick={() => changePage(num)} className={`number ${page === num && "active-number"}`}>{num}</p>
@@ -45,7 +45,7 @@ export default function Pagination({page, setPage, loadPage}) {
     if(page < 5){
       return(
         <div className={"navigation-container"}>
-          {generateNumTags(pages, 0, 5)}
+          {generatePageNums(pages, 0, 5)}
           {threeDots()}
           {page200()}
           {rightArrow()}
@@ -73,7 +73,7 @@ export default function Pagination({page, setPage, loadPage}) {
           {leftArrow()}
           {page1()}
           {threeDots()}
-          {generateNumTags(pages, 195, 200)}
+          {generatePageNums(pages, 195, 200)}
           {page200()}
         </div>
       )
@@ -84,7 +84,7 @@ export default function Pagination({page, setPage, loadPage}) {
           {leftArrow()}
           {page1()}
           {threeDots()}
-          {generateNumTags(pages, 197, 201)}
+          {generatePageNums(pages, 197, 201)}
        </div>
       )
     }

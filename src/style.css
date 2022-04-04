@@ -134,7 +134,7 @@ body {
   justify-content: end;
 
   position: absolute;
-  left: 50.5%;
+  left: 54.5%;
 }
 
 .navigation-container {
@@ -184,75 +184,3 @@ body {
   margin: 1rem 0;
 }
 
-/* Bonus: Overlay added */
-.modal-close-btn {
-  font-size: 30px;
-  color: rgb(206, 0, 0);
-  margin-top: 3.5rem;
-  margin-right: 4.5rem;
-  position: absolute;
-  right: 0;
-}
-.modal-close-btn:hover {
-  cursor: pointer;
-  color: rgb(165, 79, 79)
-}
-
-#modal {
-  background-color: #222222;
-  border: 1px solid red;
-  border-radius: 10px;
-  width: 101%;
-  height: 550px;
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  left: 0;
-  right: 0;
-  display: none;
-  bottom: 200;
-  box-shadow: 0px 9px 46px 8px rgba(0, 0, 0, 0.12),
-    0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 11px 15px rgba(0, 0, 0, 0.2);
-  z-index: 2;
-
-}
-
-.show {
-  opacity: 1;
-  display: block !important;
-
-}
-
-
-
-.modal-content {
-  margin-top: 4rem;
-  margin-left: 2rem;
-  display: flex;
-  color: #fff;
-  font-size: 25px;
-  font-family: 'Roboto';
-}
-
-.modal-image {
-  width: 500px;
-}
-
-.modal-text {
-  align-self: center;
-}
-
-.modal-text ul{
-  list-style: none;
-  padding: 0 3.5rem;
-}
-
-/* Flex classes */
-
-.d-flex{
-  display: flex;
-}
-
-.col-4{
-  width: 33% !important;
-}

@@ -8,13 +8,9 @@ import Pagination from './Pagination'
 const hash = "438313238a66c5fa9402c3235820e596";
 
 function App() {
-
-  // Page i mapleyip her birine changePage fonksiyonu verebilir miyim?
   const [page, setPage] = useState(1);
-  // const [savedPages, setSavedPages] = useState([{number: -1, characters: []}]);
-  const [currentPage, setCurrentPage] = useState([]);
-  
-
+  const [currentPage, setCurrentPage] = useState({});
+  // 
   const getMarvelApi = async() =>{
     const response = await axios(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=986efdb7820b2ac70e3a61e19ed53fba&hash=${hash}`);
     const characters = response.data.data.results;
@@ -40,13 +36,12 @@ function App() {
       getMarvelApi();
     }else if(activePage?.length > 0){
       console.log("get local data");
-      const currentPage = savedPages.filter(savedPage => savedPage.page === page);
-      console.log(currentPage);
+      const localPage = savedPages.filter(savedPage => savedPage.page === page);
+      console.log(localPage[0]);
       // setCurrentPage(() => savedPages.filter(savedPage => savedPage.page === page));
+      setCurrentPage(localPage[0])
     }
-    // console.log("saved pages", savedPages);
-    // console.log("Page state: ",page)
-    // console.log("current page", currentPage )
+   
     
   }
   useEffect(()=>{
