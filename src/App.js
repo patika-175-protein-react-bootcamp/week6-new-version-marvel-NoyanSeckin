@@ -32,17 +32,12 @@ function App() {
     if(savedPages === null){
       getMarvelApi();
     } else if(activePage?.length <= 0){
-      console.log('Get marvel data');
       getMarvelApi();
     }else if(activePage?.length > 0){
-      console.log("get local data");
       const localPage = savedPages.filter(savedPage => savedPage.page === page);
       console.log(localPage[0]);
-      // setCurrentPage(() => savedPages.filter(savedPage => savedPage.page === page));
       setCurrentPage(localPage[0])
     }
-   
-    
   }
   useEffect(()=>{
     loadPage();
