@@ -12,6 +12,7 @@ export default function Pagination({page, setPage, loadPage}) {
       action === "forward" && setPage(page + 1) ;
     }
   }
+  // Create page nums within given range
   const generatePageNums = (arr, minRange, maxRange) => {
     const nums = arr.filter(page => page > minRange && page < maxRange );
     const numTags = nums.map(num => {
@@ -58,9 +59,11 @@ export default function Pagination({page, setPage, loadPage}) {
           {leftArrow()}
           {page1()}
           {threeDots()}
+
           {dynamicPage(page, -1)}
           <p className='number active-number'>{page}</p>
           {dynamicPage(page, 1)}
+          
           {threeDots()}
           {page200()}
           {rightArrow()}
