@@ -1,16 +1,11 @@
 import React from 'react'
-export default function Cards(props)  {
-  const imageIsValid = (str) => {
-    if(str.slice(-19) !== 'image_not_available'){
-      return true
-    } else return false;
-  }
+export default function Cards({characters})  {
   return (
     <div className={"cards-container"}>
-      {props.currentPage.characters?.map(character => {
-          if(imageIsValid(character.thumbnail.path)){
+      {characters?.map(character => {
             return(
               <div 
+                key={character.name}
                 className={"card-container"}
                 >
                 <div className={"card-horizontal-rule"}> </div>
@@ -20,7 +15,6 @@ export default function Cards(props)  {
                 </p>
              </div>
             )
-          }
       })}
     </div>
   )

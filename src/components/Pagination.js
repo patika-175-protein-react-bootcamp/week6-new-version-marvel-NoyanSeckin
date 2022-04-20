@@ -1,9 +1,7 @@
-import { render } from '@testing-library/react';
 import React from 'react'
 
-export default function Pagination({page, setPage, loadPage}) {
+export default function Pagination({page, setPage}) {
   const changePage = (action) => {
-    loadPage();
     if(typeof action === 'number'){
       setPage(action);
     }
@@ -21,10 +19,10 @@ export default function Pagination({page, setPage, loadPage}) {
     return numTags;
   }
   const leftArrow = () =>{
-    return <img className='arrow' src={require('./images/arrow-left.png')} alt="arrow-left" onClick={()=> {changePage("backward");}}/>;
+    return <img className='arrow' src={require('../images/arrow-left.png')} alt="arrow-left" onClick={()=> {changePage("backward");}}/>;
   }
   const rightArrow = () => {
-    return <img className='arrow' src={require('./images/arrow-right.png')} alt="arrow-right" onClick={()=> {changePage("forward");}}/>;
+    return <img className='arrow' src={require('../images/arrow-right.png')} alt="arrow-right" onClick={()=> {changePage("forward");}}/>;
   }
   const threeDots = () =>{
     return <p className={`number`}>...</p>;
