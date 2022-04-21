@@ -1,40 +1,45 @@
-import {React, useState} from 'react'
+import {React, useState, useEffect} from 'react'
 
 import { NavLink } from "react-router-dom";
-
+import {useTranslation} from 'react-i18next';
 
 export default function SearchInput({characterNames, getDetailedCharacter}) {
-  const [userSearch, setUserSearch] = useState('');
+
+  const {t, i18n} = useTranslation();
+
   const [filteredSuggestions, setFilteredSuggestions] = useState([]);
-  const [activeSuggestionIndex, setActiveSuggestionIndex] = useState(0);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [input, setInput] = useState("");
   
-  const onChange = (e) => {
-    const userInput = e.target.value;
-
+  const onChange = (event) => {
+    const userInput = event.target.value;
     const filteredItems = characterNames.filter(
       (suggestion) =>
         suggestion.name.toLowerCase().indexOf(userInput.toLowerCase()) > -1
     );
-
-    setInput(e.target.value);
+    setInput(event.target.value);
     setFilteredSuggestions(filteredItems.sort());
-    setActiveSuggestionIndex(0);
     setShowSuggestions(true);
   };
-  
+  useEffect(() => {
+    if(!input){
+      setShowSuggestions(false);
+    }else if(input){
+      setShowSuggestions(true);
+    }
+  }, [input]);
   return (
     <div className='position-relative'>
-      <label className='search-input-label'>Karakter Ara</label>
-      <input type="text" className='search-input' placeholder='Aramak istediğiniz karakteri yazınız'
+      <label className='search-input-label'>{t('search_characters')}</label>
+      <input type="text" className='search-input' placeholder={t('type_in_the_character_you_want_to_search')}
       value={input}
       onChange={(event)=> onChange(event)}/>
       <div className='suggestions-container'>
-        {filteredSuggestions.map(suggestion => {
+        {showSuggestions && filteredSuggestions.map(suggestion => {
           return(
               <NavLink key={suggestion.id} to={`characterdetail/${suggestion.id}`}>
-                  <p className='suggestion-p'>Karakter Adı: {suggestion.name}
+                  <p className='suggestion-p'>
+                    {t('character_name')}: {suggestion.name}
                   </p>
               </NavLink>
           )
