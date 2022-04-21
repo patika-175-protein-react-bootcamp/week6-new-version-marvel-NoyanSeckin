@@ -18,7 +18,7 @@ export default function CharacterDetail() {
     if(characterDetails.length > 0){
       return characterDetails.map(character => {
         return(
-          <div key={character.id}>
+          <div key={character.id} className='details-container'>
             <div className='detail-container'>
               <div className={"card-container"} >
                 <div className={"card-horizontal-rule"}> </div>

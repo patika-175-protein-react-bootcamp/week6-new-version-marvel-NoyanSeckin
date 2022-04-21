@@ -1,6 +1,13 @@
-# Getting Started with Create React App
+# Description
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is another challenge given by Patika.dev organization. What we have here is a simple app that grabs marvel api. Users can switch the language option, search for a character, and click on a character to view its details.
+
+## Screen Shots
+
+![main](src/images/screenshots/main.png)
+![language-option](src/images/screenshots/switch-language.png)
+![search-input](src/images/screenshots/search.png)
+![detail](src/images/screenshots/detail.png)
 
 ## Available Scripts
 
