@@ -283,20 +283,16 @@ body {
 /* Detail Component */
 
 .details-container{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .detail-container{
   color: white;
-  justify-content: center;
-  width: 70%;
   display: flex;
   gap: 2rem;
   margin-top: 8rem;
   flex-wrap: wrap;
-
 }
 
 .attributes-container{
@@ -316,7 +312,6 @@ body {
 
 .series-stories-container{
   color: white;
-  justify-content: space-around;
   display: flex;
   gap: 5rem;
   margin: auto;
