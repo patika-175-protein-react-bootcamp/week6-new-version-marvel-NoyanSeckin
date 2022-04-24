@@ -10,7 +10,7 @@ export default function CharacterDetail() {
   const [characterDetails, setCharacterDetails] = useState([]);
   const loremText = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi facilis vero illo accusamus quam optio a. Non saepe, nam iusto distinctio eveniet eligendi assumenda molestiae ex aspernatur reiciendis nostrum! Enim.';
   async function fetchCharacterDetails(){
-    const response = await axios(`http://gateway.marvel.com/v1/public/characters/${id}?ts=1&apikey=986efdb7820b2ac70e3a61e19ed53fba&hash=${hash}`);
+    const response = await axios(`https://gateway.marvel.com/v1/public/characters/${id}?ts=1&apikey=986efdb7820b2ac70e3a61e19ed53fba&hash=${hash}`);
     console.log(response.data.data.results)
     setCharacterDetails(response.data.data.results);
   }

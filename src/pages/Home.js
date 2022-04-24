@@ -25,11 +25,10 @@ export default function Home() {
   }
 
   const fetchMarvelApi = async() =>{
-    const response = await axios(`http://gateway.marvel.com/v1/public/characters?ts=1&apikey=986efdb7820b2ac70e3a61e19ed53fba&hash=${hash}`);
+    const response = await axios(`https://gateway.marvel.com/v1/public/characters?ts=1&apikey=986efdb7820b2ac70e3a61e19ed53fba&hash=${hash}`);
     const recievedCharacters = response.data.data.results;
     const filteredRecievedCharacters = [];
     const recievedCharacterNames = [];
-    console.log(recievedCharacters)
     // filter characters with broken images
     recievedCharacters.forEach(character => {
       // character id in the if statement belongs to a chr with broken img

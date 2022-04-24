@@ -2,6 +2,7 @@
 
 This is another challenge given by Patika.dev organization. What we have here is a simple app that grabs marvel api. Users can switch the language option, search for a character, and click on a character to view its details.
 
+App is live at: https://marvel-api-with-routing.netlify.app/
 ## Screen Shots
 
 ![main](src/images/screenshots/main.png)
